@@ -36,8 +36,8 @@ void add_actor(ActorArray* aa, const Actor* actor) //увеличение массива, если он
 		aa->capacity *= 2;
 		aa->actors = (Actor*)realloc(aa->actors, aa->capacity * sizeof(Actor));
 	}
-	strcpy(aa->actors[aa->count].name, actor->name); //копирую имя и роль актёра в массив актёров , потом увеличиваю количество
-	strcpy(aa->actors[aa->count].role, actor->role);
+	strcpy_s(aa->actors[aa->count].name, actor->name); //копирую имя и роль актёра в массив актёров , потом увеличиваю количество
+	strcpy_s(aa->actors[aa->count].role, actor->role);
 	aa->count++;
 }
 void free_actor_array(ActorArray* aa) //обнуление памяти
@@ -129,7 +129,7 @@ int main(int argc, char** argv)
 	film* films = create_films(n);
 	for (int i = 0; i < n; i++)
 	{
-		printf("\nФильм %d:\n", i + 1);// вывожу фильм и всю информацию о нем
+		printf("\nФильм %d:\n", i + 1); // вывожу фильм и всю информацию о нем
 
 		printf("Название фильма: ");
 		fgets(films[i].title, sizeof(films[i].title), stdin);
@@ -162,7 +162,10 @@ int main(int argc, char** argv)
 	printf("\nВсе фильмы\n");
 	for (int i = 0; i < n; i++)
 	{
-		printf("%d. ", i + 1);
+		printf("%d. ", i +
+
+
+			1);
 		print_film(&films[i]);
 	}
 
